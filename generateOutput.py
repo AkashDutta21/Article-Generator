@@ -1,4 +1,4 @@
-def generate_output(transcript, model_name, word_count):
+def generate_output(transcript, model_name):
     import os
     from groq import Groq
     import streamlit as st
