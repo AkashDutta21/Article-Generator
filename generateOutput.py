@@ -1,9 +1,9 @@
-def generate_output(transcript):
+def generate_output(transcript, model_name, word_count):
     from groq import Groq
     import streamlit as st
     #Variables
-    model_name = "llama3-70b-8192"
-    word_count = 300
+    # model_name = "llama3-70b-8192"
+    # word_count = 300
 
     client = Groq(
         api_key=st.secrets["GROQ_API_KEY"],

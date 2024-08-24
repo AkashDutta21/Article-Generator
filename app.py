@@ -27,7 +27,7 @@ if st.button("Generate"):
         
         if transcript:
             st.write("Transcript fetched successfully. Generating article...")
-            article = generate_output(transcript)
+            article = generate_output(transcript, model_name, word_count)
             st.subheader("Generated Article:")
             st.write(article)
         else:
