@@ -17,7 +17,7 @@ with col1:
     )
 
 with col2:
-    word_input = st.text_input("Enter your Article Word Count:")
+    word_count = st.text_input("Enter your Article Word Count:")
 
 
 if st.button("Generate"):
@@ -27,7 +27,7 @@ if st.button("Generate"):
         
         if transcript:
             st.write("Transcript fetched successfully. Generating article...")
-            article = generate_output(transcript, model_name,)
+            article = generate_output(transcript, model_name, word_count)
             st.subheader("Generated Article:")
             st.write(article)
         else:
