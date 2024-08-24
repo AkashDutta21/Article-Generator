@@ -18,3 +18,6 @@ def fetch_transcript(video_url):
     except Exception as e:
         print(f"Error: {e}")
         return None
+    
+k = fetch_transcript("https://www.youtube.com/watch?v=kSt2QspMnG0")
+print(k)
