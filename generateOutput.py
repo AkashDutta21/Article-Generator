@@ -1,11 +1,10 @@
-def generate_output(transcript):
+def generate_output(transcript, model_name, word_count):
     import os
     from groq import Groq
     import streamlit as st
     #Variables
-    model_name = "llama3-70b-8192"
+    # model_name = "llama3-70b-8192"
     word_count = 300
-    # file_name = "Output.txt"
 
     client = Groq(
         api_key=st.secrets["GROQ_API_KEY"],
@@ -26,16 +25,6 @@ def generate_output(transcript):
 
     response = chat_completion.choices[0].message.content
 
-    chat_completion2 = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": f"{response}, split this article into 4 parapraphs",
-            }
-        ],
-        model=f"{model_name}",
-    )
-    response2 = chat_completion2.choices[0].message.content
     return response
 
 if __name__ == "__main__":

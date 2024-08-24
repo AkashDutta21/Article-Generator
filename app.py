@@ -5,6 +5,12 @@ from generateOutput import generate_output
 # streamlit App
 st.header(":red[Youtube] Video to :blue[Article] Generator")
 
+# Dropdown for selecting LLM model
+model_name = st.selectbox(
+    "Choose your LLM model:",
+    ("llama-3.1-8b-instant", "llama-3.1-70b-versatile", "llama3-8b-8192", "llama3-70b-8192")
+)
+
 video_url = st.text_input("Enter the YouTube video URL:")
 
 
@@ -15,7 +21,7 @@ if st.button("Generate"):
         
         if transcript:
             st.write("Transcript fetched successfully. Generating article...")
-            article = generate_output(transcript)
+            article = generate_output(transcript, model_name,)
             st.subheader("Generated Article:")
             st.write(article)
         else:
