@@ -1,55 +1,55 @@
 import streamlit as st
-from getTranscript import fetch_transcript
-from generateOutput import generate_output
+# from getTranscript import fetch_transcript
+# from generateOutput import generate_output
 
-# def fetch_transcript(video_url):
+def fetch_transcript(video_url):
     
-#     from youtube_transcript_api import YouTubeTranscriptApi
-#     from getVideoID import get_youtube_video_id
+    from youtube_transcript_api import YouTubeTranscriptApi
+    from getVideoID import get_youtube_video_id
     
-#     try:
-#         video_id = get_youtube_video_id(video_url)
-#         if not video_id:
-#             print("Invalid YouTube URL.")
-#             return None
+    try:
+        video_id = get_youtube_video_id(video_url)
+        if not video_id:
+            print("Invalid YouTube URL.")
+            return None
 
-#         transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
         
-#         # Join the transcript parts into a single string
-#         full_transcript = "\n".join([entry['text'] for entry in transcript])
+        # Join the transcript parts into a single string
+        full_transcript = "\n".join([entry['text'] for entry in transcript])
         
-#         return full_transcript
-#     except Exception as e:
-#         print(f"Error: {e}")
-#         return None
+        return full_transcript
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
-# def generate_output(transcript, model_name, word_count):
-#     from groq import Groq
-#     import streamlit as st
-#     #Variables
-#     # model_name = "llama3-70b-8192"
-#     # word_count = 300
+def generate_output(transcript, model_name, word_count):
+    from groq import Groq
+    import streamlit as st
+    #Variables
+    # model_name = "llama3-70b-8192"
+    # word_count = 300
 
-#     client = Groq(
-#         api_key=st.secrets["GROQ_API_KEY"],
-#     )
+    client = Groq(
+        api_key=st.secrets["GROQ_API_KEY"],
+    )
 
-#     if transcript is None:
-#         return None
+    if transcript is None:
+        return None
 
-#     chat_completion = client.chat.completions.create(
-#         messages=[
-#             {
-#                 "role": "user",
-#                 "content": f"{transcript}, generate a {word_count} word article from the above transcript",
-#             }
-#         ],
-#         model=f"{model_name}",
-#     )
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": f"{transcript}, generate a {word_count} word article from the above transcript",
+            }
+        ],
+        model=f"{model_name}",
+    )
 
-#     response = chat_completion.choices[0].message.content
+    response = chat_completion.choices[0].message.content
 
-#     return response
+    return response
 
 # streamlit App
 st.header(":red[Youtube] Video to :blue[Article] Generator")
