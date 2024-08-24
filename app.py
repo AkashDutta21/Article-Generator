@@ -5,13 +5,19 @@ from generateOutput import generate_output
 # streamlit App
 st.header(":red[Youtube] Video to :blue[Article] Generator")
 
-# Dropdown for selecting LLM model
-model_name = st.selectbox(
-    "Choose your LLM model:",
-    ("llama-3.1-8b-instant", "llama-3.1-70b-versatile", "llama3-8b-8192", "llama3-70b-8192")
-)
-
 video_url = st.text_input("Enter the YouTube video URL:")
+
+col1, col2 = st.columns([2, 2])
+
+# Dropdown for selecting LLM model
+with col1:
+    model_name = st.selectbox(
+        "Choose your LLM model:",
+        ("llama-3.1-8b-instant", "llama-3.1-70b-versatile", "llama3-8b-8192", "llama3-70b-8192")
+    )
+
+with col2:
+    word_input = st.text_input("Enter your Article Word Count:")
 
 
 if st.button("Generate"):
