@@ -1,14 +1,14 @@
 def generate_output(transcript):
     import os
     from groq import Groq
-
+    import streamlit as st
     #Variables
     model_name = "llama3-70b-8192"
     word_count = 300
     # file_name = "Output.txt"
 
     client = Groq(
-        api_key=os.environ.get("GROQ_API_KEY"),
+        api_key=st.secrets["GROQ_API_KEY"],
     )
 
     if transcript is None:
