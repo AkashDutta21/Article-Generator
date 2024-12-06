@@ -5,7 +5,7 @@ from generateOutput import generate_output
 # streamlit App
 st.header(":red[Youtube] Video to :blue[Article] Generator")
 
-video_url = st.text_input("Enter the YouTube video URL:")
+video_url = st.text_input("Enter the YouTube video URL::")
 
 col1, col2 = st.columns([2, 2])
 
